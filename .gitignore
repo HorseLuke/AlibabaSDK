@@ -1,0 +1,8 @@
+/.buildpath
+/.project
+/.settings
+/testsmock/Config/Dev/
+/testsmock/LoaderConfig/ServiceLocatorProduction.php
+/temp/
+/data/
+/vendor/
