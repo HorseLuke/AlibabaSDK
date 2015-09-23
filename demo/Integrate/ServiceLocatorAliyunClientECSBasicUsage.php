@@ -1,6 +1,6 @@
 <?php
 /*
- * 使用依赖注入Service Locator调用本SDK
+ * 使用依赖注入Service Locator调用本SDK：AliyunClient（调用ECS）
  */
 
 use AlibabaSDK\Integrate\ServiceLocator;
@@ -17,12 +17,10 @@ ServiceLocator::getInstance($SLConfig);
 
 //请注意这里和demo文件/demo/TaobaoClient/basicUsage.php的不同。
 //通过Service Locator，你可以随时调用，而无需重新初始化
-$taobaoClient = ServiceLocator::getInstance()->getService('TaobaoClient');
+$aliyunClient = ServiceLocator::getInstance()->getService('AliyunClient');
 
 
-$response = $taobaoClient->send('alibaba.security.yundun.spam.validate', array(
-    'content' => '你好！'
-));
+$response = $aliyunClient->send('DescribeInstanceTypes');
 
 if(!$response->isOk()){
     exit("API Error!:". var_export($response->getError(true)));

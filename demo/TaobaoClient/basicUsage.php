@@ -14,8 +14,7 @@ $taobaoClient = new TaobaoClient(array(
 /*
  * 如果需要记录日志，可参照以下代码，
  * 在使用了\AlibabaSDK\Base\CurlRequestTrait的类中：
- *     - 向setRequestLogger注入匿名函数、
- *     - 或注入实现了\AlibabaSDK\Base\CurlRequestLoggerInterface接口类的实例
+ *     - 注入实现了\AlibabaSDK\Base\CurlRequestLoggerInterface接口类的实例
  *         （\AlibabaSDK\Integrate\FileRequestLogger为一个示例）
  * 传递的参数请参见方法\AlibabaSDK\Base\CurlRequestLoggerInterface::receiveSignalRequestLogger()
 */

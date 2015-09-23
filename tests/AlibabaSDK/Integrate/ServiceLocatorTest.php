@@ -20,7 +20,7 @@ class ServiceLocatorTest extends \PHPUnit_Framework_TestCase{
 
         $signal = "test____". mt_rand();
         
-        $this->mockTest->setService("test1", function($loader) use ($signal){
+        $this->mockTest->setService("test1", function($locator) use ($signal){
             $instance = new \stdClass();
             $instance->signal = $signal;
             $instance->rand = mt_rand();
@@ -35,7 +35,7 @@ class ServiceLocatorTest extends \PHPUnit_Framework_TestCase{
     
     public function testCreateService(){
 
-        $this->mockTest->setService("test1", function($loader){
+        $this->mockTest->setService("test1", function($locator){
             $instance = new \stdClass();
             $instance->rand = mt_rand();
             return $instance;
@@ -47,7 +47,7 @@ class ServiceLocatorTest extends \PHPUnit_Framework_TestCase{
     }
     
     public function testDelService(){
-        $this->mockTest->setService("test1", function($loader){
+        $this->mockTest->setService("test1", function($locator){
             $instance = new \stdClass();
             $instance->rand = mt_rand();
             return $instance;

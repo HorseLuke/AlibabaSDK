@@ -17,8 +17,6 @@ class CurlRequestTraitTest extends \PHPUnit_Framework_TestCase{
     
     const FOR_TEST_ONLY_VALUE_SIGNAL = '99999999999999999999999999';
     
-    protected $callbackForSetRequestLoggerByClosure;
-    
     protected function setUp(){
         parent::setUp();
         $this->mockCurlRequestTrait = new CurlRequestTraitExtendMock();
@@ -69,38 +67,11 @@ class CurlRequestTraitTest extends \PHPUnit_Framework_TestCase{
         
     }
     
-    public function testSetRequestLoggerByClosure(){
-        
-        $logger = function($url, $finalBodyParam, $requestMethod, Response $response){
-            $this->callbackForSetRequestLoggerByClosure = $this::FOR_TEST_ONLY_VALUE_SIGNAL;
-        };
-        
-        $this->mockCurlRequestTrait->setRequestLogger('closure', $logger);
-        
-        $url = 'http://gw.api.tbsandbox.com/router/rest';
-        $response = $this->mockCurlRequestTrait->rawSend($url);
-        
-        $this->assertEquals($this::FOR_TEST_ONLY_VALUE_SIGNAL, $this->callbackForSetRequestLoggerByClosure);
-        
-    }
-    
     public function testDelRequestLogger(){
-        $logger = function($url, $finalBodyParam, $requestMethod, Response $response){
-        };
+        $logger2 = new CurlRequestLoggerInterfaceExtendMock();
         
-        $this->mockCurlRequestTrait->setRequestLogger('closure', $logger);
-        $this->mockCurlRequestTrait->delRequestLogger('closure');
-        
-    }
-    
-    public function testSetRequestLoggerThatMakeException(){
-        try{
-            $this->mockCurlRequestTrait->setRequestLogger("loggerName", "NOT_RIGHT_VALUE");
-        }catch(\InvalidArgumentException $e){
-            return ;
-        }
-        
-        $this->fail("SET WRONG VALUE IN setRequestLogger BUT DO NOT THROW InvalidArgumentException");
+        $this->mockCurlRequestTrait->setRequestLogger('test2', $logger2);
+        $this->mockCurlRequestTrait->delRequestLogger('test2');
         
     }
     

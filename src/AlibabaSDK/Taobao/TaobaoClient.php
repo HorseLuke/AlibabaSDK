@@ -22,11 +22,16 @@ class TaobaoClient{
     protected $cfg_appsecret;
     
     /**
-     * API网关地址。默认https
-     * 如有需要使用http，请改为http://gw.api.taobao.com/router/rest
+     * API网关地址。
+     * 1、http 网关
+     *       正式环境：http://gw.api.taobao.com/router/rest
+     *       沙箱环境：http://gw.api.tbsandbox.com/router/rest
+     * 2、https 网关
+     *       正式环境：https://eco.taobao.com/router/rest
+     *      沙箱环境：https://gw.api.tbsandbox.com/router/rest 
      * @var string
      */
-    protected $cfg_gatewayUrl = "https://eco.taobao.com/router/rest";
+    protected $cfg_gatewayUrl = "http://gw.api.taobao.com/router/rest";
     
     protected $cfg_format = "json";
     

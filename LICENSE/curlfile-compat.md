@@ -10,7 +10,7 @@ https://github.com/imnotjames/curlfile-compat
 
 ## Used in this project
 
-src/AlibabaSDK/Base/CURLFileCompact.php
+src/AlibabaSDK/Base/CURLFileCompat.php
 
 ## License
 

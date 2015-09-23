@@ -3,6 +3,7 @@
 use AlibabaSDK\Taobao\TaobaoClient;
 use AlibabaSDK\TaobaoOAuth\TaobaoOAuthClient;
 use AlibabaSDK\Aliyun\AliyunClient;
+use AlibabaSDK\Integrate\FileRequestLogger;
 
 if(!class_exists('AlibabaSDK\Integrate\ServiceLocator', false)){
     exit('ACCESS DENIED');
@@ -10,20 +11,22 @@ if(!class_exists('AlibabaSDK\Integrate\ServiceLocator', false)){
 
 $config = array();
 
-$config['TaobaoClient'] = function($loader){
-    return new TaobaoClient(array(
+$config['TaobaoClient'] = function($locator){
+    $client = new TaobaoClient(array(
         'appkey' => '',
         'appsecret' => '',
     ));
+    return $client;
 };
 
 
-$config['TaobaoOAuthClient'] = function($loader){
-    return new TaobaoOAuthClient(array(
+$config['TaobaoOAuthClient'] = function($locator){
+    $client = new TaobaoOAuthClient(array(
         'appkey' => '',
         'appsecret' => '',
         'redirect_uri' => '',
     ));
+    return $client;
 };
 
 
@@ -37,22 +40,33 @@ $config['TaobaoOAuthClient'] = function($loader){
  截止20150921，regionId有：
  "cn-hangzhou","cn-beijing","cn-qingdao","cn-hongkong","cn-shanghai","us-west-1","cn-shenzhen","ap-southeast-1"
  */
-$config['AliyunClient'] = function($loader){
-    return new AliyunClient(array(
+$config['AliyunClient'] = function($locator){
+    $client = new AliyunClient(array(
         'accessKeyId' => '',
         'accessKeySecret' => '',
         'regionId' => 'cn-hangzhou',
     ));
+    return $client;
 };
 
-$config['AliyunClientRDS'] = function($loader){
-    return new AliyunClient(array(
+$config['AliyunClientRDS'] = function($locator){
+    $client = new AliyunClient(array(
         'accessKeyId' => '',
         'accessKeySecret' => '',
         'regionId' => 'cn-hangzhou',
         'version' => '2014-08-15',
         'gatewayUrl' => 'https://rds.aliyuncs.com',
     ));
+    return $client;
+};
+
+
+$config['FileRequestLogger'] = function($locator){
+    $fileLogger = new FileRequestLogger(array(
+        'logDir' => "",
+    ));
+    
+    return $fileLogger;
 };
 
 return $config;

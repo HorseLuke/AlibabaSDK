@@ -40,8 +40,7 @@ trait CurlRequestTrait{
     public function rawSend($url, $bodyParam = null, $requestMethod = 'GET', Response $response = null){
     
         if(null === $response){
-            $className = $this->cfg_defaultResponseClass;
-            $response = new $className();
+            $response = $this->createDefaultResponse();
         }
         
         if(null === $this->curlInit){
@@ -99,6 +98,11 @@ trait CurlRequestTrait{
         return $response;
     }
     
+    public function createDefaultResponse(){
+        $className = $this->cfg_defaultResponseClass;
+        return new $className();
+    }
+    
     public function getDefaultCurlOpt(){
         $curlOpt = array(
             CURLOPT_RETURNTRANSFER => true,
@@ -129,8 +133,7 @@ trait CurlRequestTrait{
          
         foreach($params as $v){
             
-            //CURLFileCompact为低于php 5.5的兼容
-            if($v instanceof \CURLFile || $v instanceof CURLFileCompact){
+            if($this->isUploadAtomCmd($v)){
                 return true;
             }
             
@@ -146,7 +149,7 @@ trait CurlRequestTrait{
      */
     protected function rawSendBuildCleanUploadBody($param){
         foreach($param as $k => $v){
-            if($v instanceof \CURLFile || $v instanceof CURLFileCompact){
+            if($this->isUploadAtomCmd($v)){
                 continue;
             }
             
@@ -169,16 +172,10 @@ trait CurlRequestTrait{
     /**
      * 设置一个requestLogger
      * @param string $name
-     * @param string $value
+     * @param CurlRequestLoggerInterface $logger
      */
-    public function setRequestLogger($name, $value){
-        if($value instanceof \Closure){
-            $this->requestLoggerStack[$name] = $value;
-        }elseif($value instanceof CurlRequestLoggerInterface){
-            $this->requestLoggerStack[$name] = $value;
-        }else{
-            throw new \InvalidArgumentException('value should be Closure or implement CurlRequestLoggerInterface');
-        }
+    public function setRequestLogger($name, CurlRequestLoggerInterface $logger){
+        $this->requestLoggerStack[$name] = $logger;
     }
     
     /**
@@ -203,11 +200,7 @@ trait CurlRequestTrait{
      */
     protected function dispatchRequestLogger($url, $finalBodyParam, $requestMethod, Response $response){
         foreach($this->requestLoggerStack as $logger){
-            if($logger instanceof \Closure){
-                $logger($url, $finalBodyParam, $requestMethod, $response);
-            }else{
-                $logger->receiveSignalRequestLogger($url, $finalBodyParam, $requestMethod, $response);
-            }
+            $logger->receiveSignalRequestLogger($url, $finalBodyParam, $requestMethod, $response);
         }
     }
     
@@ -222,7 +215,7 @@ trait CurlRequestTrait{
     public function curl_file_create($filename, $mimetype = '', $postname = ''){
         
         if (!function_exists('curl_file_create')) {
-            return new CURLFileCompact($filename, $mimetype, ($postname ? $postname : basename($filename)));
+            return new CURLFileCompat($filename, $mimetype, ($postname ? $postname : basename($filename)));
         }
         
         return curl_file_create($filename, $mimetype, $postname);
@@ -235,8 +228,8 @@ trait CurlRequestTrait{
      */
     protected function isUploadAtomCmd($v){
         
-        //CURLFileCompact为低于php 5.5的兼容
-        if($v instanceof \CURLFile || $v instanceof CURLFileCompact){
+        //CURLFileCompat为低于php 5.5的兼容
+        if($v instanceof \CURLFile || $v instanceof CURLFileCompat){
             return true;
         }
         

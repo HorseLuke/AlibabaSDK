@@ -11,35 +11,33 @@ if(!class_exists('AlibabaSDK\Integrate\ServiceLocator', false)){
 
 $config = array();
 
-$config['TaobaoClient'] = function($loader){
+$config['TaobaoClient'] = function($locator){
     $client = new TaobaoClient(array(
         'appkey' => DEMO_TAOBAO_APPKEY,
         'appsecret' => DEMO_TAOBAO_APPSECRET,
+        //'gatewayUrl' => 'https://eco.taobao.com/router/rest',    //需要https的请这样改
     ));
     
     /*
      * 如果需要记录日志，可参照以下代码，
      * 在使用了\AlibabaSDK\Base\CurlRequestTrait的类中：
-     *     - 向setRequestLogger注入匿名函数、
-     *     - 或注入实现了\AlibabaSDK\Base\CurlRequestLoggerInterface接口类的实例
+     *     - 注入实现了\AlibabaSDK\Base\CurlRequestLoggerInterface接口类的实例
      *         （\AlibabaSDK\Integrate\FileRequestLogger为一个示例）
      * 传递的参数请参见方法\AlibabaSDK\Base\CurlRequestLoggerInterface::receiveSignalRequestLogger()
      */
-    $fileLogger = new FileRequestLogger(array(
-        'logDir' => DEMO_LOGDIR,
-    ));
-    $client->setRequestLogger('fileLogger', $fileLogger);
+    $client->setRequestLogger('fileLogger', $locator->getService('FileRequestLogger'));
     
     return $client;
 };
 
 
-$config['TaobaoOAuthClient'] = function($loader){
-    return new TaobaoOAuthClient(array(
+$config['TaobaoOAuthClient'] = function($locator){
+    $client =  new TaobaoOAuthClient(array(
         'appkey' => DEMO_TAOBAO_APPKEY,
         'appsecret' => DEMO_TAOBAO_APPSECRET,
         'redirect_uri' => '',
     ));
+    return $client;
 };
 
 
@@ -53,22 +51,32 @@ $config['TaobaoOAuthClient'] = function($loader){
  截止20150921，regionId有：
  "cn-hangzhou","cn-beijing","cn-qingdao","cn-hongkong","cn-shanghai","us-west-1","cn-shenzhen","ap-southeast-1"
  */
-$config['AliyunClient'] = function($loader){
-    return new AliyunClient(array(
-        'accessKeyId' => '',
-        'accessKeySecret' => '',
+$config['AliyunClient'] = function($locator){
+    $client = new AliyunClient(array(
+        'accessKeyId' => DEMO_ALIYUN_ACCESSKEY_ID,
+        'accessKeySecret' => DEMO_ALIYUN_ACCESSKEY_SECRET,
         'regionId' => 'cn-hangzhou',
     ));
+    return $client;
 };
 
-$config['AliyunClientRDS'] = function($loader){
-    return new AliyunClient(array(
-        'accessKeyId' => '',
-        'accessKeySecret' => '',
+$config['AliyunClientRDS'] = function($locator){
+    $client = new AliyunClient(array(
+        'accessKeyId' => DEMO_ALIYUN_ACCESSKEY_ID,
+        'accessKeySecret' => DEMO_ALIYUN_ACCESSKEY_SECRET,
         'regionId' => 'cn-hangzhou',
         'version' => '2014-08-15',
         'gatewayUrl' => 'https://rds.aliyuncs.com',
     ));
+    return $client;
+};
+
+$config['FileRequestLogger'] = function($locator){
+    $fileLogger = new FileRequestLogger(array(
+        'logDir' => DEMO_LOGDIR,
+    ));
+    
+    return $fileLogger;
 };
 
 return $config;

@@ -10,7 +10,7 @@ if(!class_exists('AlibabaSDK\Integrate\ServiceLocator', false)){
 
 $config = array();
 
-$config['AliyunClientBuildSignatureTest'] = function($loader){
+$config['AliyunClientBuildSignatureTest'] = function($locator){
     return new AliyunClient(array(
         'accessKeyId' => 'testid',
         'accessKeySecret' => 'testsecret',
@@ -18,7 +18,7 @@ $config['AliyunClientBuildSignatureTest'] = function($loader){
     ));
 };
 
-$config['TaobaoClientBuildSignatureTest'] = function($loader){
+$config['TaobaoClientBuildSignatureTest'] = function($locator){
     return new TaobaoClient(array(
         'appkey' => 'test',
         'appsecret' => 'test',
@@ -26,7 +26,7 @@ $config['TaobaoClientBuildSignatureTest'] = function($loader){
     ));
 };
 
-$config['TaobaoClientSandbox'] = function($loader){
+$config['TaobaoClientSandbox'] = function($locator){
     return new TaobaoClient(array(
         'appkey' => '111111',
         'appsecret' => '111111',

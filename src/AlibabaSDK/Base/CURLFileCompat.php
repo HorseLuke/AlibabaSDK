@@ -36,7 +36,7 @@ namespace AlibabaSDK\Base;
  * @author imnotjames
  * @link https://github.com/imnotjames/curlfile-compat
  */
-class CURLFileCompact{
+class CURLFileCompat{
 	/**
 	 * @var string
 	 */
