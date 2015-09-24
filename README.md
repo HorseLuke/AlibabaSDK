@@ -4,8 +4,8 @@
 
 本PHP SDK适用于调用阿里巴巴旗下各开放平台的API。目前已经支持：
 
-* [淘宝开放平台API](http://open.taobao.com/api/api_list.htm?spm=a219a.7386653.1.30.MYVxfa)
-* [淘宝开放平台OAuth登录](http://open.taobao.com/doc/detail.htm?id=102635&spm=a219a.7386781.1998342838.19.ryTNmv)
+* [淘宝开放平台API](http://open.taobao.com/api/api_list.htm?spm=a219a.7386653.1.30.MYVxfa)。备注：阿里云安全API，即[云盾魔方](http://csc.aliyun.com/)属于这个体系
+* [淘宝开放平台OAuth登录](http://open.taobao.com/doc/detail.htm?id=102635&spm=a219a.7386781.1998342838.19.ryTNmv)。
 * [阿里云API](http://develop.aliyun.com/api/?spm=5176.100054.201.108.UyKD0b)。目前支持ECS和RDS，理论可进行进一步扩展。
 
 
@@ -69,9 +69,19 @@ limitations under the License.
 
 （正在撰写中）
 
+## 其它
+
+如果存在使用上的问题、发现bug或者想提建议，请在此发issue、或发邮件到horseluke@126.com。
+
+如果发现安全漏洞，请直接发邮件到horseluke@126.com。
+
+以上反馈信息本人会详细评估，并进行适合的沟通和处理。
+
+![觉得好用，用支付宝打赏给作者攒钱买房](http://7xlz3z.com1.z0.glb.clouddn.com/img/git/apavqmok7au6ummhae.png)
+
 ## 参赛说明
 
-本作品为2015"云朵之上，编码未来"[阿里云开源编程马拉松](http://bbs.aliyun.com/read/256663.html?spm=5176.100131.1.6.urYu37)参赛作品之一，根据比赛规则，托管在[Git@OSC](http://www.oschina.net/2015-ali-hackathon#item-rule)上。
+本作品为2015"云朵之上，编码未来"[阿里云开源编程马拉松](http://bbs.aliyun.com/read/256663.html?spm=5176.100131.1.6.urYu37)参赛作品之一。[根据比赛规则](http://www.oschina.net/2015-ali-hackathon#item-rule)，本作品托管在[Git@OSC](http://git.oschina.net/)上。
 
 该参赛作品应看作半学术半工程化作品。该含义是：
 
@@ -81,5 +91,3 @@ limitations under the License.
 
 基于该SDK的工业化实际应用集成开源参赛作品，正在开发中。
 
-
-![攒钱买房](http://7xlz3z.com1.z0.glb.clouddn.com/img/git/apavqmok7au6ummhae.png)
