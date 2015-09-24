@@ -4,9 +4,27 @@
 
 本PHP SDK适用于调用阿里巴巴旗下各开放平台的API。目前已经支持：
 
-* [淘宝开放平台API](http://open.taobao.com/api/api_list.htm?spm=a219a.7386653.1.30.MYVxfa)。备注：阿里云安全API，即[云盾魔方](http://csc.aliyun.com/)属于这个体系
-* [淘宝开放平台OAuth登录](http://open.taobao.com/doc/detail.htm?id=102635&spm=a219a.7386781.1998342838.19.ryTNmv)。
-* [阿里云API](http://develop.aliyun.com/api/?spm=5176.100054.201.108.UyKD0b)。目前支持ECS和RDS，理论可进行进一步扩展。
+* 淘宝开放平台API
+
+本SDK完全支持[淘宝开放平台API](http://open.taobao.com/api/api_list.htm?spm=a219a.7386653.1.30.MYVxfa)。
+
+对应Client类名：\AlibabaSDK\Taobao\TaobaoClient
+
+备注：阿里云安全API，即[云盾魔方](http://csc.aliyun.com/)属于这个体系。
+
+* 淘宝开放平台OAuth登录
+
+本SDK完全支持[淘宝开放平台OAuth登录](http://open.taobao.com/doc/detail.htm?id=102635&spm=a219a.7386781.1998342838.19.ryTNmv)。
+
+对应Client类名：\AlibabaSDK\TaobaoOAuth\TaobaoOAuthClient
+
+* 阿里云API
+
+本SDK部分支持[阿里云API](http://develop.aliyun.com/api/?spm=5176.100054.201.108.UyKD0b)。
+
+目前支持ECS和RDS，其余支持尚待进一步扩展开发。
+
+对应Client类名：\AlibabaSDK\Aliyun\AliyunClient
 
 
 ## 特性
@@ -52,7 +70,9 @@ limitations under the License.
 
 * tests目录下的所有“Example2”开头的目录：根据不同接口和Client进行的测试
 
-建议为不同的api接口、注册不同的Client类实例，方法有：
+建议按照需要，按参数注册不同的Client类单例（比如不同Region来注册不同的Client单例、不同的appkey注册不同的Client单例）。
+
+方法有：
 
 * 使用工厂模式 + 单例模式。
 
@@ -83,7 +103,9 @@ limitations under the License.
 
 本作品为2015"云朵之上，编码未来"[阿里云开源编程马拉松](http://bbs.aliyun.com/read/256663.html?spm=5176.100131.1.6.urYu37)参赛作品之一。[根据比赛规则](http://www.oschina.net/2015-ali-hackathon#item-rule)，本作品托管在[Git@OSC](http://git.oschina.net/)上。
 
-该参赛作品应看作半学术半工程化作品。该含义是：
+本SDK作品主要服务阿里云安全API，即云盾魔方。由于云盾魔方接口属于淘宝开放平台API体系，故该SDK主要支持淘宝开放平台。
+
+本参赛作品应看作半学术半工程化作品。该含义是：
 
 * 半学术：由于SDK的特殊性质，若不进行实际应用集成，则可用性不高，仅能作为API架构规范和相关实现的研究。
 
