@@ -59,4 +59,18 @@ class ServiceLocatorTest extends \PHPUnit_Framework_TestCase{
         
     }
     
+    public function testGetAndSetInstanceDefaultConfig(){
+        $defaultToRevertCfg = ServiceLocator::getInstanceDefaultConfig();
+        
+        $cfgToTest = array(
+            'test1' => mt_rand(),
+        );
+        
+        ServiceLocator::setInstanceDefaultConfig($cfgToTest);
+        $cfgToTestReturn = ServiceLocator::getInstanceDefaultConfig();
+        
+        $this->assertEquals($cfgToTest['test1'], $cfgToTestReturn['test1']);
+        
+    }
+    
 }

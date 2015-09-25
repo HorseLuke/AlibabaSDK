@@ -10,7 +10,17 @@ namespace AlibabaSDK\Integrate;
  */
 class ServiceLocator{
     
+    /**
+     * 单例
+     * @var unknown
+     */
     protected static $instance;
+    
+    /**
+     * 单例的默认配置（请勿修改，内部使用）
+     * @var unknown
+     */
+    protected static $instanceDefaultCfg;
     
     /**
      * 依赖注入Service Locator配置文件位置
@@ -82,10 +92,31 @@ class ServiceLocator{
      */
     public static function getInstance(array $config = null){
         if(null === self::$instance){
+            if(null === $config){
+                $config = self::$instanceDefaultCfg;
+            }else{
+                self::$instanceDefaultCfg = $config;    //如果是在调用本方法时候手动传入的，则要进行赋值以记录
+            }
             self::$instance = new self($config);
         }
         
         return self::$instance;
+    }
+    
+    /**
+     * 设置在调用单例方法前（getInstance）的默认配置
+     * @param mixed $cfg
+     */
+    public static function setInstanceDefaultConfig(array $cfg = null){
+        self::$instanceDefaultCfg = $cfg;
+    }
+    
+    /**
+     * 获取在调用单例方法（getInstance）的默认配置
+     * @param mixed $cfg
+     */
+    public static function getInstanceDefaultConfig(){
+        return self::$instanceDefaultCfg;
     }
     
     /**

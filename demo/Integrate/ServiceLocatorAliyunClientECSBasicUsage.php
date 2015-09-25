@@ -7,12 +7,12 @@ use AlibabaSDK\Integrate\ServiceLocator;
 
 require __DIR__. '/../CommonHeaderForDemoOnly.php';
 
-//初始化依赖注入Service Locator的实例（\AlibabaSDK\Integrate\ServiceLocator）
+//初始化依赖注入Service Locator的单实例配置（\AlibabaSDK\Integrate\ServiceLocator）
 $SLConfig = array(
     'configFile' => __DIR__. '/ConfigServiceLocatorDefaultDemo.php',    //配置文件写法见本文件所在文件夹下的ConfigServiceLocatorDefaultDemo.php
 );
-ServiceLocator::getInstance($SLConfig);
-//初始化依赖注入Service Locator的实例完毕
+ServiceLocator::setInstanceDefaultConfig($SLConfig);
+//初始化依赖注入Service Locator的单实例配置完毕
 
 
 //请注意这里和demo文件/demo/TaobaoClient/basicUsage.php的不同。
