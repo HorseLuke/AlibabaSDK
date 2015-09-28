@@ -31,8 +31,9 @@
 
 * 轻量级胶水层、紧凑型设计，新手进阶均相宜
 * 完整的单元测试代码
-* 符合PSR-4载入方式，预留Composer接入模式
+* 符合PSR-4载入方式
 * 内置的依赖注入（Service Locator实现）可快速调用相关Client
+* 支持Composer接入：```composer require horseluke/alibaba-sdk```
 
 ## 协议
 
