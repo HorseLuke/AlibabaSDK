@@ -102,9 +102,11 @@ limitations under the License.
 
 ## 参赛说明
 
-本作品属于项目选题“基于阿里云安全接口的SDK及内容安全检测微服务”的作品系列之一：SDK部分。本选题作品系列之二，即基于该SDK的工业化（虚构）实际应用集成与内容安全检测微服务开源参赛作品，正在开发中。
+本作品为2015"云朵之上，编码未来"[阿里云开源编程马拉松](http://bbs.aliyun.com/read/256663.html?spm=5176.100131.1.6.urYu37)参赛作品之一。[根据比赛规则](http://www.oschina.net/2015-ali-hackathon#item-rule)，本作品托管在[Git@OSC](http://git.oschina.net/)上。
 
-本SDK作品为2015"云朵之上，编码未来"[阿里云开源编程马拉松](http://bbs.aliyun.com/read/256663.html?spm=5176.100131.1.6.urYu37)参赛作品之一。[根据比赛规则](http://www.oschina.net/2015-ali-hackathon#item-rule)，本作品托管在[Git@OSC](http://git.oschina.net/)上。
+本作品属于项目选题“基于阿里云安全接口的内容安全微服务”的作品系列之一：SDK部分。
+
+本选题作品系列之二，即基于内容安全检测微服务（暨SDK的工业化（虚构）实际应用集成）开源参赛作品，请访问[horseluke / content-guard-microsrv-aliyun](http://git.oschina.net/horseluke/content-guard-microsrv-aliyun)。
 
 本SDK作品主要服务阿里云安全API，即云盾魔方。由于云盾魔方接口属于淘宝开放平台API体系，故该SDK主要支持淘宝开放平台。
 
