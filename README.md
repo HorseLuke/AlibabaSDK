@@ -98,7 +98,7 @@ limitations under the License.
 
 以上反馈信息本人会详细评估，并进行适合的沟通和处理。
 
-![觉得好用，用支付宝打赏给作者攒钱买房](http://7xlz3z.com1.z0.glb.clouddn.com/img/git/apavqmok7au6ummhae.png)
+![觉得好用，赞赏作者](https://raw.githubusercontent.com/HorseLuke/Assets/master/img/weixin_zanshangcode.jpg)
 
 ## 参赛说明
 
