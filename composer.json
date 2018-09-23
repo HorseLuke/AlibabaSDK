@@ -4,7 +4,7 @@
     "type": "library",
     "keywords": ["alibaba","taobao", "aliyun", "sdk", "api"],
     "homepage": "https://github.com/HorseLuke/AlibabaSDK-php",
-    "license": "Apache2",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "horseluke",
