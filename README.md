@@ -98,7 +98,8 @@ limitations under the License.
 
 以上反馈信息本人会详细评估，并进行适合的沟通和处理。
 
-![觉得好用，赞赏作者](https://raw.githubusercontent.com/HorseLuke/Assets/master/img/weixin_zanshangcode.jpg)
+![觉得好用，用支付宝支持作者](https://horseluke.github.io/Assets/img/zfb-hb.png)
+
 
 ## 参赛说明
 
