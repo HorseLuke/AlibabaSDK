@@ -3,7 +3,7 @@
     "description": "Unofficial SDK For Alibaba",
     "type": "library",
     "keywords": ["alibaba","taobao", "aliyun", "sdk", "api"],
-    "homepage": "https://github.com/HorseLuke/AlibabaSDK-php",
+    "homepage": "https://github.com/HorseLuke/AlibabaSDK",
     "license": "Apache-2.0",
     "authors": [
         {
